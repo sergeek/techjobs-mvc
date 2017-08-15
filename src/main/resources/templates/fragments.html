@@ -27,5 +27,16 @@
         </div>
     </div>
 
+    <!-- Display job results and how many jobs found -->
+    <div th:fragment="job-listings" th:if="${jobs} and ${jobs.size()}">
+        <h3 th:text="${jobs.size()} + ' Result(s)'"></h3>
+        <table th:each="job : ${jobs}" class="job-listing">
+            <tr th:each="col : ${job}">
+                <td th:text="${#strings.capitalizeWords(col.getKey())}"></td>
+                <td th:text="${col.getValue()}"></td>
+            </tr>
+        </table>
+    </div>
+
 </body>
 </html>
